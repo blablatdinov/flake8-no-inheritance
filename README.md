@@ -7,11 +7,13 @@
 
 flake8 plugin for check and inheritance of implementations
 
+Inheritance is bad and that composition over inheritance is a good idea
+
+[yegor256 blog post](https://www.yegor256.com/2016/09/13/inheritance-is-procedural.html)
 
 ## Features
 
 - Fully typed with annotations and checked with mypy, [PEP561 compatible](https://www.python.org/dev/peps/pep-0561/)
-- Add yours!
 
 
 ## Installation
@@ -23,13 +25,28 @@ pip install flake8-no-inheritance
 
 ## Example
 
-Showcase how your project can be used:
+Wrong:
 
 ```python
-from flake8_no_inheritance.example import some_function
+class Animal(object):
+    
+    def move(self, to_x: int, to_y: int):
+        # Some logic for change coordinates
 
-print(some_function(3, 4))
-# => 7
+    def sound(self):
+        print('Abstract animal sound')
+
+
+class Dog(Animal):
+
+    def sound(self):
+        print('bark')
+
+
+class Cat(Human):
+
+    def sound(self):
+        print('meow')
 ```
 
 ## License
